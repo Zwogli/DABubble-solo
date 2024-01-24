@@ -33,7 +33,7 @@ export class AuthService {
   googleAccount = false;
   isLoggedInForMerging = false;
   public isLoggedIn: boolean = false;
-  private defaultChannel: string = '3ZNVPzTSepCzgFNVsxUS';
+  private defaultChannel: string = '1PufpIYSAbuVLNU5jCgZ';
 
   constructor(
     public router: Router,
