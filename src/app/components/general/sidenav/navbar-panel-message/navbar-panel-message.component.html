@@ -2,6 +2,7 @@
   hideToggle
   (opened)="panelOpenState = true"
   (closed)="panelOpenState = false"
+  [expanded]="true"
 >
   <mat-expansion-panel-header>
     <mat-panel-title (click)="rotateArrow()">
@@ -21,8 +22,8 @@
   </mat-expansion-panel-header>
 
   <div class="mat-expansion-panel__content container__elements--column">
-    <!-- 
-			render user for expansion-panel 
+    <!--
+			render user for expansion-panel
 		-->
     <div
       *ngFor="let chat of sidebarService.privateChatsPanelDataSubject | async"
@@ -43,8 +44,8 @@
         </p>
       </div>
     </div>
-    <!-- 
-			open dialog add user 
+    <!--
+			open dialog add user
 		-->
     <div
       (click)="openDialogNewChat()"

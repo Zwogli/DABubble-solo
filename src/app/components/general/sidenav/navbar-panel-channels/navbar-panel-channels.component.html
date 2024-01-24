@@ -2,6 +2,7 @@
   hideToggle
   (opened)="panelOpenState = true"
   (closed)="panelOpenState = false"
+  [expanded]="true"
 >
   <mat-expansion-panel-header>
     <mat-panel-title class="container__element--spacebetween">
@@ -28,7 +29,7 @@
   </mat-expansion-panel-header>
 
   <div class="mat-expansion-panel__content container__elements--column">
-    <!-- 
+    <!--
 			elements for expansion-panel
 		-->
     <div
@@ -37,7 +38,7 @@
     >
       <p [customLink]="['channel', channel.id]"># {{ channel.name }}</p>
     </div>
-    <!-- 
+    <!--
 			add channel element
 		-->
     <div
