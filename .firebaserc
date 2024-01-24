@@ -6,9 +6,16 @@
           "dabubble-185ec"
         ]
       }
+    },
+    "da-bubble-62243": {
+      "hosting": {
+        "DABubble": [
+          "da-bubble-62243"
+        ]
+      }
     }
   },
   "projects": {
-    "default": "dabubble-185ec"
+    "default": "da-bubble-62243"
   }
 }
