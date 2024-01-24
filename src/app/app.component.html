@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <app-header-mobile
+    *ngIf="
+      (rs.isDesktop$ | async) && auth.isLoggedIn && router.url.includes('home')
+    "
+    parent="'main'"
+  ></app-header-mobile>
+
+  <div [class.view__desktop]="rs.isDesktop$ | async">
+    <router-outlet></router-outlet>
+
+    <div
+      class="navbar__manager"
+      (click)="toggleNavbar()"
+      *ngIf="
+        (rs.isDesktop$ | async) &&
+        auth.isLoggedIn &&
+        router.url.includes('home')
+      "
+    >
+      <div
+        *ngIf="!(dialogService.showNavbar$ | async)"
+        class="navbar__manager--img-open"
+      ></div>
+      <p *ngIf="!(dialogService.showNavbar$ | async)">öffne Menüleiste</p>
+
+      <div
+        *ngIf="dialogService.showNavbar$ | async"
+        class="navbar__manager--img-close"
+      ></div>
+      <p *ngIf="dialogService.showNavbar$ | async">schließe Menüleiste</p>
+    </div>
+
+    <router-outlet
+      *ngIf="rs.isDesktop$ | async"
+      id="channelOutlet"
+      name="channel"
+    ></router-outlet>
+
+    <router-outlet
+      *ngIf="rs.isDesktop$ | async"
+      id="threadOutlet"
+      name="thread"
+      class="thread"
+    ></router-outlet>
+  </div>
+
+  <app-dialog-manager></app-dialog-manager>
+</div>
