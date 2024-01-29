@@ -231,7 +231,7 @@ scroll-bar
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 4px;
 }
 
 /* Track */
@@ -244,9 +244,4 @@ scroll-bar
 ::-webkit-scrollbar-thumb {
   background: var(--color-blue-border);
   border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-blue-primary-default);
 }

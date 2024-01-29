@@ -13,7 +13,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 
 export class NavbarPanelChannelsComponent {
-  panelOpenState: boolean = false;
+  panelOpenState: boolean = true;
   currentUserId: any;
   currentUser!: User;
   subCurrentUser!: User;

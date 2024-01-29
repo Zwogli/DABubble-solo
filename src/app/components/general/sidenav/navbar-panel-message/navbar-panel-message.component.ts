@@ -15,7 +15,7 @@ import { SidebarService } from 'src/app/services/sidebar.service';
 export class NavbarPanelMessageComponent {
   sidebarService: SidebarService = inject(SidebarService);
 
-  panelOpenState: boolean = false;
+  panelOpenState: boolean = true;
   currentUserId: any;
   currentUser!: User;
   subCurrentUser!: User;
