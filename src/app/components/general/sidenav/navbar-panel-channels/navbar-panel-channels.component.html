@@ -6,7 +6,7 @@
 >
   <mat-expansion-panel-header>
     <mat-panel-title class="container__element--spacebetween">
-      <div class="panel__titel--left" (click)="rotateArrow()">
+      <div class="panel__titel--left">
         <span
           id="channel--arrow_drop_down"
           class="material-icons-outlined rotate"
@@ -19,12 +19,6 @@
         </div>
       </div>
 
-      <span
-        [routerLink]="'/home/' + 'addChannel'"
-        class="material-icons-outlined element--blue"
-      >
-        add
-      </span>
     </mat-panel-title>
   </mat-expansion-panel-header>
 
@@ -43,10 +37,10 @@
 		-->
     <div
       (click)="openDialogNewChannel()"
-      class="fix--space-left sort__elemts--row cursor__add"
+      class="fix--space-left sort__elemts--row cursor__add add-channel"
     >
-      <span class="material-icons-outlined element--blue"> add_circle </span>
-      <p class="element--blue">Channel hinzufügen</p>
+      <img src="assets/img/add_circle.png">
+      <p>Channel hinzufügen</p>
     </div>
   </div>
 </mat-expansion-panel>

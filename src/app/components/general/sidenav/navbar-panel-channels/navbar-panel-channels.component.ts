@@ -35,7 +35,7 @@ export class NavbarPanelChannelsComponent {
     this.setCurrentUser();
     this.setMemberInChannelArray();
   }
-  
+
   ngOnDestroy() {
     this.currentUserIsDestroyed$.next(true);
   }

@@ -60,6 +60,11 @@ textarea {
   font-family: var(--font-selection);
 }
 
+.material-icons-outlined {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
 .avatar-xsmall {
   width: 34px !important;
   height: 34px !important;

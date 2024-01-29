@@ -1,3 +1,9 @@
+mat-panel-title {
+  &:hover {
+    color: var(--color-blue-secondary-hover);
+  }
+}
+
 .panel__titel--left {
   display: flex;
   align-items: center;
@@ -57,6 +63,9 @@
 
 .cursor__add{
   cursor: pointer;
+  &:hover {
+    color: var(--color-blue-secondary-hover);
+  }
 }
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -85,4 +94,11 @@ material design
 }
 p {
   margin: 0 0 0;
+}
+.add-channel {
+  &:hover {
+    :first-child {
+      filter: brightness(0) saturate(100%) invert(30%) sepia(64%) saturate(2099%) hue-rotate(225deg) brightness(97%) contrast(95%);
+    }
+  }
 }

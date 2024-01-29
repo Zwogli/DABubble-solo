@@ -1,3 +1,9 @@
+mat-panel-title {
+  &:hover {
+    color: var(--color-blue-secondary-hover);
+  }
+}
+
 .panel__titel--left {
   display: flex;
   align-items: center;
@@ -66,6 +72,9 @@
 }
 .cursor__add{
   cursor: pointer;
+  &:hover {
+    color: var(--color-blue-secondary-hover);
+  }
 }
 .container--small{
   width: var(--sice-avatar-message);

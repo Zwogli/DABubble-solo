@@ -24,6 +24,10 @@ export class DialogNewChatComponent {
   windowWidth: number = window.innerWidth;
   private currentUserIsDestroyed$ = new Subject<boolean>();
   private allUsersIsDestroyed$ = new Subject<boolean>();
+  public isDesktop!: boolean;
+  public isMobile!: boolean;
+  public isTablet!: boolean;
+  private componentIsDestroyed$ = new Subject<boolean>();
 
   constructor(
     private authService: AuthService,
@@ -31,7 +35,25 @@ export class DialogNewChatComponent {
     public dialogService: DialogManagerService,
     public rs: ResponsiveService,
     private router: Router
-  ) {}
+  ) {
+    this.rs.isDesktop$
+    .pipe(takeUntil(this.componentIsDestroyed$))
+    .subscribe((val) => {
+      this.isDesktop = val;
+    });
+
+    this.rs.isTablet$
+    .pipe(takeUntil(this.componentIsDestroyed$))
+    .subscribe((val) => {
+      this.isTablet = val;
+    });
+
+  this.rs.isMobile$
+    .pipe(takeUntil(this.componentIsDestroyed$))
+    .subscribe((val) => {
+      this.isMobile = val;
+    });
+  }
 
   ngOnInit() {
     this.setCurrentUser();
@@ -109,8 +131,21 @@ export class DialogNewChatComponent {
       this.router.navigateByUrl(
         `/home(channel:chat/private)?channelID=${this.firestoreService.newChatRefId}`
       );
+      if (this.isTablet || this.isMobile) {
+        this.router.navigateByUrl(
+          `/chat/private?channelID=${this.firestoreService.newChatRefId}`
+        );
+      }
+      if (this.isDesktop) {
+        this.router.navigateByUrl(
+          `/home(channel:chat/private)?channelID=${this.firestoreService.newChatRefId}`
+        );
+      }
       this.removeUser();
       this.dialogService.showDialogNewChat();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000)
     }
   }
 

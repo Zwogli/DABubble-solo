@@ -10,6 +10,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 8px;
+
+  img {
+    height: 60px;
+  }
+
 }
 .header__profil{
     display: flex;
@@ -22,7 +28,7 @@ header {
         white-space: nowrap;
         margin: unset;
         text-align: center;
-    }   
+    }
 }
 
 .logo__container {
