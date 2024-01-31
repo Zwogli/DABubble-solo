@@ -24,7 +24,7 @@ export class DialogCreateChannelComponent {
     private authService: AuthService,
     public firestoreService: FirestoreService,
     public dialogService: DialogManagerService,
-    public rs: ResponsiveService,  
+    public rs: ResponsiveService,
     ){}
 
   get channelNameForm() {
@@ -63,7 +63,6 @@ export class DialogCreateChannelComponent {
 
   errorMsgMissedHashtag(){
     this.err_hash = true;
-    console.error('Error forgot hashtag "#"');
   }
 
   createChannel(value:string){
