@@ -1,16 +1,16 @@
 <main>
     <header>
-        <h2> 
-            <span> Dein Profil bearbeiten </span>  
+        <h2>
+            <span> Dein Profil bearbeiten </span>
 
             <span (click)="onNoClick()" class="material-icons-outlined close__element"> close </span>
         </h2>
     </header>
-    
+
     <div class="dialog__img">
         <img class="dialog__img--style" src="{{ currentUser.photoUrl }}" alt="profil-avatar">
     </div>
-    
+
     <form action="" [formGroup]="updateUserForm">
         <div class="dialog__content">
             <div class="dialog__content--name">
@@ -21,24 +21,24 @@
                 </div>
 
                 <div class="dialog__content--input">
-                    <input 
-                        #userName 
-                        formControlName="nameForm" 
-                        type="text" 
+                    <input
+                        #userName
+                        formControlName="nameForm"
+                        type="text"
                         placeholder="{{ currentUser.name }}"
                     >
 
-                    <label 
-                    for="userName" 
-                    class="block__alert" 
+                    <label
+                    for="userName"
+                    class="block__alert"
                     *ngIf="nameForm?.invalid && (nameForm?.dirty || nameForm?.touched)"
                     >
                         <div *ngIf="nameForm?.errors?.['pattern']">*Bitte verwende nur Buchstaben.</div>
                     </label>
                 </div>
             </div>
-        
-        
+
+
             <div class="dialog__content--email">
                 <div class="dialog__content--email-headline">
                     <span class="material-icons-outlined"> email </span>
@@ -47,10 +47,10 @@
                 </div>
 
                 <div class="dialog__content--input">
-                    <input 
-                        #userEmail 
-                        formControlName="emailForm" 
-                        type="email" 
+                    <input
+                        #userEmail
+                        formControlName="emailForm"
+                        type="email"
                         placeholder="{{ currentUser.email }}"
                     >
                     <div class="block__alert" *ngIf="emailForm?.invalid && emailForm?.touched">
@@ -63,17 +63,17 @@
 
             <div class="dialog__btn">
                 <button
-                    (click)="onNoClick()" 
-                    class="dialog__btn--cancel"> 
-                    Abbrechen 
+                    (click)="onNoClick()"
+                    class="dialog__btn--cancel">
+                    Abbrechen
                 </button>
-                
-                <button 
+
+                <button
                     class="dialog__btn--save"
                     [disabled]="updateUserForm.invalid"
                     [class.btn-disabled]="updateUserForm.invalid"
-                    (click)="updateCurrentUserData(userName.value, userEmail.value)"> 
-                    Speichern 
+                    (click)="updateCurrentUserData(userName.value, userEmail.value)">
+                    Speichern
                 </button>
             </div>
         </div>

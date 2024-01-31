@@ -11,8 +11,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider, signOut, linkWithPopup } from '@angular/fire/auth';
 import { ResponsiveService } from './responsive.service';
-import { take } from 'rxjs';
-import { SidebarService } from './sidebar.service';
+import { BehaviorSubject, Subject, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +19,6 @@ import { SidebarService } from './sidebar.service';
 export class AuthService {
   auth: any = getAuth();
   rs: ResponsiveService = inject(ResponsiveService);
-  sidebarS: SidebarService = inject(SidebarService);
 
   signUpError = false;
   signUpSuccessfully = false;
@@ -32,7 +30,7 @@ export class AuthService {
   currentUserId: string = '';
   googleAccount = false;
   isLoggedInForMerging = false;
-  public isLoggedIn: boolean = false;
+  public isLoggedIn = new BehaviorSubject<boolean>(false);
   private defaultChannel: string = '1PufpIYSAbuVLNU5jCgZ';
 
   constructor(
@@ -215,25 +213,16 @@ export class AuthService {
   getCurrentUser() {
     onAuthStateChanged(this.auth, async (user) => {
       if (user) {
+        this.isLoggedIn.next(true);
         await this.firestoreService.checkSignUpEmail(user?.email);
         this.currentUserId = this.firestoreService.currentUserId;
         this.firestoreService.startSubUser(this.currentUserId);
         this.firestoreService.setOnlineStatus(this.currentUserId, 'online');
         localStorage.setItem('userId', this.currentUserId);
-        setTimeout(() => {
-          this.isLoggedIn = true;
-        }, 500);
       } else {
         // User is signed out
-
         this.currentUserId = '';
-        this.isLoggedIn = false;
-
-        setTimeout(() => {
-          this.sidebarS.privateChats = [];
-          this.sidebarS.privateChatsPanelData = [];
-        }, 500);
-
+        this.isLoggedIn.next(false);
         const docId = localStorage.getItem('userId');
         if (docId !== null) {
           this.firestoreService.setOnlineStatus(docId, 'offline');

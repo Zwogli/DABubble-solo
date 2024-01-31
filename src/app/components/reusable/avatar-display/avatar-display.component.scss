@@ -1,1 +1,11 @@
 @import 'src/app/style/_avatar.scss';
+
+.avatar {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.online-status {
+  height: 9px !important;
+  width: 9px !important;
+}
