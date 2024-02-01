@@ -4,19 +4,19 @@ class="overlay"
 *ngIf="dialogService.showDialogNewChannel$ | async"
 ></div>
 
-<div 
+<div
 [class.dialog__hide]="!(dialogService.showDialogNewChannel$ | async) && (rs.isDesktop$ | async)"
 [class.dialog__desktop]="(dialogService.showDialogNewChannel$ | async) && (rs.isDesktop$ | async)"
-[class.dialog__mobile]="(rs.isMobile$ | async) || (rs.isTablet$ | async)"
-[class.slide--up]="(dialogService.showDialogNewChannel$ | async) && (rs.isMobile$ | async) || (rs.isTablet$ | async)"
-[class.slide--down]="showCloseAnimation && !(dialogService.showDialogNewChannel$ | async) && (rs.isMobile$ | async) || (rs.isTablet$ | async)"
+[class.dialog__mobile]="((rs.isMobile$ | async) || (rs.isTablet$ | async))"
+[class.slide--up]="(dialogService.showDialogNewChannel$ | async) && ((rs.isMobile$ | async) || (rs.isTablet$ | async))"
+[class.slide--down]="showCloseAnimation && !(dialogService.showDialogNewChannel$ | async) && ((rs.isMobile$ | async) || (rs.isTablet$ | async))"
 >
-	<!-- 
+	<!--
 		mobile dialog bar
 	 -->
-  	<div 
-  	class="orientation" 
-  	(click)="closeDialogNewChannel()" 
+  	<div
+  	class="orientation"
+  	(click)="closeDialogNewChannel()"
   	*ngIf="rs.isMobile$ | async"
   	>
     	<div>
@@ -24,21 +24,21 @@ class="overlay"
     	</div>
   	</div>
 
-	<!-- 
+	<!--
 		dialog header
 	 -->
   	<div class="container__header">
   	  	<span>Leute hinzufügen</span>
 
-  		<span 
-  		(click)="closeDialogNewChannel()" 
+  		<span
+  		(click)="closeDialogNewChannel()"
   		class="material-icons-outlined close__element"
   		*ngIf="(rs.isDesktop$ | async)"
   		>close</span>
   	</div>
 
   	<div class="radio-form">
-		<!-- 
+		<!--
 			option add all user
 		-->
     	<div class="container__input">
@@ -58,7 +58,7 @@ class="overlay"
     	  	</label>
     	</div>
 
-		<!-- 
+		<!--
 			option select user
 		-->
     	<div class="container__elements">
@@ -71,14 +71,14 @@ class="overlay"
           		(click)="showUserSearchbarNewChannel()"
         		/>
 
-        		<label 
+        		<label
 				for="radioSingleUser"
 				>Bestimmte Leute hinzufügen</label>
       		</div>
 
       		<form [formGroup]="searchUserForm">
-        		<div 
-				id="new-channel-search-user" 
+        		<div
+				id="new-channel-search-user"
 				class="container__search hide"
 				>
           			<input
@@ -89,7 +89,7 @@ class="overlay"
             		placeholder="Enter Name"
           			/>
 
-					<!-- 
+					<!--
 						error msg
 					 -->
           			<label
@@ -107,8 +107,8 @@ class="overlay"
             			</div>
           			</div>
 
-          			<!-- 
-						render filtered User 
+          			<!--
+						render filtered User
 					-->
           			<div
           			id="filtered-user"
@@ -131,13 +131,13 @@ class="overlay"
           			          	user.onlineStatus}}"
 								></span>
           			    	</div>
-					
+
           			    	<p>{{ user.name }}</p>
           			  	</div>
           			</div>
 
-         			<!-- 
-						render added User 
+         			<!--
+						render added User
 					-->
           			<div class="container__user">
           			  	<div
@@ -153,7 +153,7 @@ class="overlay"
           			      		class="avatar-small"
           			      		src="{{ user.photoUrl }}"
           			      		alt="avatar"/>
-          			      
+
 								<span
           			        	class="onlinestatus onlinestatus--color-{{
           			          	user.onlineStatus
@@ -161,7 +161,7 @@ class="overlay"
           			    	</div>
 
           			    	<p *ngIf="user != this.currentUser">{{ user.name }}</p>
-							
+
           			    	<span
           			    	class="material-icons-outlined close__element"
           			    	(click)="removeUser(user)"
@@ -174,8 +174,8 @@ class="overlay"
     	</div>
 
     	<div class="container__btn--right">
-    		<button 
-			(click)="createChannel()" 
+    		<button
+			(click)="createChannel()"
 			class="btn__log-in">Erstellen</button>
     	</div>
   	</div>

@@ -5,6 +5,11 @@ import { User } from 'src/app/models/user.class';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { ResponsiveService } from 'src/app/services/responsive.service';
+import { Router } from '@angular/router';
+import { DialogProfilComponent } from 'src/app/components/reusable/dialog-profil/dialog-profil.component';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogManagerService } from 'src/app/services/dialog-manager.service';
+import { DialogProfilMainSearchComponent } from 'src/app/components/reusable/dialog-profil-main-search/dialog-profil-main-search.component';
 
 @Component({
   selector: 'app-navbar-searchbar',
@@ -21,12 +26,38 @@ export class NavbarSearchbarComponent {
   searchCacheUser: any[] = [];
   searchterm!:string;
   private currentUserIsDestroyed$ = new Subject<boolean>();
+  private componentIsDestroyed$ = new Subject<boolean>();
+
+  public isDesktop!: boolean;
+  public isMobile!: boolean;
+  public isTablet!: boolean;
 
   constructor(
     private authService: AuthService,
     public firestoreService: FirestoreService,
-    public rs: ResponsiveService,  
-  ){}
+    public dialogManagerService: DialogManagerService,
+    public rs: ResponsiveService,
+    private router: Router,
+    public dialog: MatDialog,
+  ){
+    this.rs.isDesktop$
+    .pipe(takeUntil(this.componentIsDestroyed$))
+    .subscribe((val) => {
+      this.isDesktop = val;
+    });
+
+    this.rs.isTablet$
+    .pipe(takeUntil(this.componentIsDestroyed$))
+    .subscribe((val) => {
+      this.isTablet = val;
+    });
+
+  this.rs.isMobile$
+    .pipe(takeUntil(this.componentIsDestroyed$))
+    .subscribe((val) => {
+      this.isMobile = val;
+    });
+  }
 
   ngOnInit(){
     this.setCurrentUser();
@@ -92,7 +123,7 @@ export class NavbarSearchbarComponent {
   }
 
   isMinLength(searchedItem:string){
-    return searchedItem.length > 1
+    return searchedItem.length > 0;
   }
 
   /**
@@ -114,6 +145,24 @@ export class NavbarSearchbarComponent {
         this.searchCacheUser.push(user);
       }
     })
+  }
+
+  navigateToChannel(channelId: string) {
+    if (this.isTablet || this.isMobile) {
+      this.router.navigateByUrl(
+        `/chat/channel?channelID=${channelId}`
+      );
+    }
+    if (this.isDesktop) {
+      this.router.navigateByUrl(
+        `/home(channel:chat/channel)?channelID=${channelId}`
+      );
+    }
+  }
+
+  navigateToUser(user:any) {
+    this.dialog.open(DialogProfilMainSearchComponent);
+    this.dialogManagerService.selectedUser = user;
   }
 
 }

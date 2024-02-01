@@ -17,6 +17,7 @@ import {
   userConverter,
 } from '../interfaces/firestore/converter';
 import { Chat } from '../models/chat.class';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,8 +25,9 @@ import { Chat } from '../models/chat.class';
 export class SidebarService implements OnDestroy {
   firestore: Firestore = inject(Firestore);
   firestoreService: FirestoreService = inject(FirestoreService);
+  auth: AuthService = inject(AuthService);
 
-  private currentUserIsDestroyed$ = new Subject<boolean>();
+  public currentUserIsDestroyed$ = new Subject<boolean>();
   public currentUser!: User;
   public privateChats: Chat[] = [];
   public privateChatsPanelData: IMessagePanel[] = [];
@@ -51,7 +53,7 @@ export class SidebarService implements OnDestroy {
   async loadPrivateChats() {
     // Ignores before first emit from currentUser
     if (!this.currentUser) return;
-
+    this.privateChats = [];
     // Query for all privateChat Documents from User
     const q = query(
       collection(this.firestore, 'privateChat'),
@@ -74,6 +76,8 @@ export class SidebarService implements OnDestroy {
   }
 
   loadUserFromPrivateChats() {
+    this.privateChatsPanelData = [];
+
     this.privateChats.forEach(async (chat: Chat) => {
       if (
         // Determine if chat is chat of the user itself and if its already in the array

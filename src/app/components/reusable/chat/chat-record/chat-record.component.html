@@ -37,6 +37,7 @@
     <!-- ========== Message itself ========== -->
     <div
       class="message"
+      *ngIf="currentUser"
       [ngClass]="{
         message__self: message.sentById === currentUser.id,
         message__menuOpened: message === selectedMsg

@@ -19,7 +19,6 @@ main{
         border: 1px solid var(--color-blue-border);
         border-radius: 42px;
         font-size: 0.9rem;
-        cursor: pointer;
         &:focus{
             outline: none;
         }
@@ -32,7 +31,7 @@ main{
 }
 
 .container__result{
-    width: 80%;
+    width: 82%;
     min-width: 50%;
     background-color: var(--color-white);
     padding: 1rem;
@@ -112,6 +111,20 @@ main{
       }
       &--color-true {
         background-color: var(--color-green);
+      }
+    }
+  }
+
+  @media(max-width: 500px) {
+    .searchbar {
+      input {
+        margin: 0 16px;
+      }
+
+      label {
+        span {
+          margin-right: 16px;
+        }
       }
     }
   }

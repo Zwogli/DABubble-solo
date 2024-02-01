@@ -6,7 +6,7 @@
 
       <div class="block__input">
         <mat-icon class="material-icons-outlined mail-icon" [class.icon-color-black]="emailForm?.dirty || emailForm?.touched">mail</mat-icon>
-        <input formControlName="emailForm" type="email" placeholder="beispielname@email.com" #userEmail>
+        <input formControlName="emailForm" type="email" placeholder="beispielname@email.com" #userEmail autocomplete="on">
       </div>
       <div class="block__alert-email" *ngIf="emailForm?.invalid && (emailForm?.touched)">
         <div *ngIf="emailForm?.errors?.['required']">*Bitte gib eine E-Mail-Adresse ein.</div>

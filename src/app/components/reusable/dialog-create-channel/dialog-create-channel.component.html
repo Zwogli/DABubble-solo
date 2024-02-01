@@ -1,5 +1,5 @@
-<div 
-class="overlay" 
+<div
+class="overlay"
 (click)="closeDialogCreateChannel()"
 *ngIf="rs.isDesktop$ | async"
 ></div>
@@ -11,17 +11,17 @@ class="overlay"
     <header>
         <span> Channel hinzufügen </span>
 
-        <span 
-        (click)="closeDialogCreateChannel()" 
+        <span
+        (click)="closeDialogCreateChannel()"
         class="material-icons-outlined close__element"
         > close </span>
     </header>
 
     <p class="description">
-        Channels dienen deinem Team zur Kommunikation. Am besten sollten sie themenbezogen sein  #marketing zum Beispiel.
+        Channels dienen deinem Team zur Kommunikation. Am besten sollten sie themenbezogen sein, zum Beispiel #Marketing.
     </p>
 
-    <form [formGroup]="createChannelForm">
+    <form [formGroup]="createChannelForm" autocomplete="off">
         <div class="form__name">
             <span class="sub-headline">Neuer Channel Name</span>
 
@@ -30,31 +30,31 @@ class="overlay"
             formControlName="channelNameForm"
             id="create-channel"
             #createChannel
-            type="text" 
+            type="text"
             placeholder="# z.B. Kooperationsprojekte"
             >
-            
-            <label 
-            *ngIf="this.firestoreService.channelAlreadyExist" 
-            for="create-channel" 
-            class="block__alert"
-            >*Channel Name Existiert bereits.</label>
 
-            <label 
-            *ngIf="err_hash" 
-            for="create-channel" 
+            <label
+            *ngIf="this.firestoreService.channelAlreadyExist"
+            for="create-channel"
             class="block__alert"
-            >*Sie haben ein Hashtag vergessen "#"</label>
+            >*Channel Name existiert bereits.</label>
 
-            <div 
-            class="block__alert" 
+            <label
+            *ngIf="err_hash"
+            for="create-channel"
+            class="block__alert"
+            >*Das erste Zeichen muss ein "#" sein.</label>
+
+            <div
+            class="block__alert"
             *ngIf="channelNameForm?.invalid && (channelNameForm?.dirty || channelNameForm?.touched)"
             >
-                <div 
+                <div
                 *ngIf="channelNameForm?.errors?.['minlength']"
-                >*Bitte verwende min. 4 Zeichen.</div>
+                >*Bitte verwende mindestens 4 Zeichen.</div>
 
-                <div 
+                <div
                 *ngIf="channelNameForm?.errors?.['maxlength']"
                 >*Bitte verwende weniger als 16 Zeichen.</div>
             </div>
@@ -66,13 +66,13 @@ class="overlay"
             <span>(optional)</span>
         </div>
 
-        <input 
+        <input
         type="text"
         id="channel-description"
         placeholder="Dein Text hier">
 
         <div class="container__btn">
-            <button 
+            <button
             class="btn__submit"
             (click)="openUserSelection()"
             [disabled]="createChannelForm.invalid || this.firestoreService.channelAlreadyExist || err_hash"

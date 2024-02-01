@@ -11,6 +11,7 @@ export class DialogManagerService {
   showDialogAddChannel$:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showDialogNewChannel$:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showDialogNewChat$:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  selectedUser!: any;
 
   constructor() { }
 

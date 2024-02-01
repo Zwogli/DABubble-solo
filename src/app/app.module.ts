@@ -59,6 +59,7 @@ import { ImprintComponent } from './components/general/auth/imprint/imprint.comp
 import { PrivacyPolicyComponent } from './components/general/auth/privacy-policy/privacy-policy.component';
 import { DialogAddMemberToChannelComponent } from './components/reusable/dialogs/dialog-add-member-to-channel/dialog-add-member-to-channel.component';
 import { DialogChannelMenuComponent } from './components/reusable/dialogs/dialog-channel-menu/dialog-channel-menu.component';
+import { DialogProfilMainSearchComponent } from './components/reusable/dialog-profil-main-search/dialog-profil-main-search.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { DialogChannelMenuComponent } from './components/reusable/dialogs/dialog
     PrivacyPolicyComponent,
     DialogAddMemberToChannelComponent,
     DialogChannelMenuComponent,
+    DialogProfilMainSearchComponent,
   ],
   
   imports: [
