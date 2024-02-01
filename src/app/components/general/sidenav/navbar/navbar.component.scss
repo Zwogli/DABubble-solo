@@ -44,6 +44,11 @@ responsive
   span {
     font-size: 1.333rem;
   }
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 @media(max-width: 500px) {
