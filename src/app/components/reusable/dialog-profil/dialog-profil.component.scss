@@ -1,8 +1,12 @@
 main{
-    padding: 2rem 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  max-height: calc(90dvh - 2rem);
+  overflow-y: auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 290px;
+  height: 455px;
 }
 header{
     h2{
