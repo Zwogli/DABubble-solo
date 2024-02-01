@@ -14,7 +14,7 @@
 
         <div class="block__input">
           <mat-icon class="material-icons-outlined mail-icon" [class.icon-color-black]="nameForm?.dirty || nameForm?.touched">person</mat-icon>
-          <input formControlName="nameForm" type="email" placeholder="Name und Nachname" #userName>
+          <input formControlName="nameForm" type="email" placeholder="Name und Nachname" #userName autocomplete="on">
         </div>
         <div class="block__alert-name" *ngIf="nameForm?.invalid && (nameForm?.dirty || nameForm?.touched)">
           <div *ngIf="nameForm?.errors?.['required']">*Bitte gib einen Vor- und Nachnamen ein.</div>
