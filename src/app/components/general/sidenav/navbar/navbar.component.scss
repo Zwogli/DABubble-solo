@@ -1,6 +1,6 @@
 main {
   background-color: var(--color-white);
-  padding: 2rem 1rem 2rem 1rem;
+  padding: 2rem 1rem 2rem 0.5rem;
   height: calc(100dvh - 80px - 4rem);
   position: relative;
   display: flex;
@@ -35,10 +35,10 @@ responsive
 
 .workspace__title {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   gap: 8px;
-
+  margin-left: 20px;
   margin-bottom: 16px;
 
   span {
