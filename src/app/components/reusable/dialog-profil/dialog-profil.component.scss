@@ -109,3 +109,10 @@ header{
 .close__element{
     cursor: pointer;
 }
+
+.edit-icon {
+  background-color: unset !important;
+  &:hover {
+    background-color: var(--color-blue-bg) !important;
+  }
+}
