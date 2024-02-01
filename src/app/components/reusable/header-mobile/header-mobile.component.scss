@@ -69,3 +69,9 @@ header {
     width: 40px !important;
   }
 }
+
+@media(min-width: 1800px) {
+  header {
+    padding-top: 12px;
+  }
+}
