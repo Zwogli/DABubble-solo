@@ -110,7 +110,7 @@ export class ChooseAvatarComponent implements OnInit, OnDestroy {
       this.choosenAvatar,
       'sign-up',
       [],
-      ['1PufpIYSAbuVLNU5jCgZ']
+      ['3ZNVPzTSepCzgFNVsxUS']
     );
     setTimeout(() => {
       if (this.authService.signUpSuccessfully) {

@@ -60,7 +60,7 @@ const desktopRoutes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/home(channel:chat/channel)?channelID=3ZNVPzTSepCzgFNVsxUS',
+    redirectTo: '/home(channel:chat/channel)?channelID=sW3tFuaF6p0UDhqHlUeA',
     pathMatch: 'full',
   },
 ];
