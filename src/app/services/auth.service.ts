@@ -28,6 +28,7 @@ export class AuthService {
   dataError = false;
   errorUnexpected = false;
   currentUserId: string = '';
+  guestIsLoggedIn = false;
   googleAccount = false;
   isLoggedInForMerging = false;
   public isLoggedIn = new BehaviorSubject<boolean>(false);
@@ -217,6 +218,7 @@ export class AuthService {
         await this.firestoreService.checkSignUpEmail(user?.email);
         this.currentUserId = this.firestoreService.currentUserId;
         this.firestoreService.startSubUser(this.currentUserId);
+        this.checkIfGuest(this.currentUserId);
         this.firestoreService.setOnlineStatus(this.currentUserId, 'online');
         localStorage.setItem('userId', this.currentUserId);
       } else {
@@ -229,6 +231,14 @@ export class AuthService {
         }
       }
     });
+  }
+
+  checkIfGuest(currentUserId: string) {
+    if (currentUserId === '7KESI1vYTRdZK41Z4mHgdW4ffnH3') {
+      this.guestIsLoggedIn = true;
+    } else {
+      this.guestIsLoggedIn = false;
+    }
   }
 
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>sign-up

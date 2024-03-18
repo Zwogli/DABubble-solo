@@ -17,7 +17,7 @@ export class DialogProfilComponent {
   private currentUserIsDestroyed$ = new Subject<boolean>();
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private firestoreService: FirestoreService,
     public dialogRef: MatDialogRef<DialogProfilEditComponent>,
     public dialog: MatDialog
